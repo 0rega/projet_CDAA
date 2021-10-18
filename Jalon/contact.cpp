@@ -14,7 +14,7 @@ Contact::~Contact(){
 string Contact::get_nom() const{
     return nom ;
 }
-
+intern
 string Contact::get_prenom() const{
     return prenom ;
 }
