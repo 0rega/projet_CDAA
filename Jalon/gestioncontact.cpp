@@ -5,6 +5,7 @@ GestionContact::GestionContact()
 
 }
 
+
 GestionContact::~GestionContact(){
     ListContact.clear() ;
 }
@@ -48,14 +49,15 @@ void GestionContact::modifierContact(const string &s, const char &c , const stri
     case 'p': found_contact(s).set_prenom(sm) ; break ;
     case 'm': found_contact(s).set_mail(sm) ; break ;
     case 'e': found_contact(s).set_entreprise(sm) ; break ;
+    case 'u': found_contact(s).set_uriPhoto(sm) ; break ;
     default : cout << "option non disponible" ; break ;
     }
 }
 
+
 void affiche_gestion(const GestionContact &gp){
-    for(auto it = gp.get_ListContact().begin(); it != gp.get_ListContact().end() ; it++)
-    {
-        affiche(*it) ;
+    for(auto &v: gp.get_ListContact()){
+        affiche(v) ;
         cout << endl ;
     }
 }
