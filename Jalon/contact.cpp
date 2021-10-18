@@ -5,6 +5,7 @@ Contact::Contact()
 
 }
 
+J'essaie de le modifier poour voir si ca fonctionne 
 Contact::~Contact(){
     //telephone.clear() ;
     //linteractions.clear() ;
@@ -14,7 +15,7 @@ Contact::~Contact(){
 string Contact::get_nom() const{
     return nom ;
 }
-intern
+
 string Contact::get_prenom() const{
     return prenom ;
 }
