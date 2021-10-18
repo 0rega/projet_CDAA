@@ -48,7 +48,11 @@ public:
     void set_creation(const tm &) ;
     void set_linteractions(const list<Interaction> &) ;
 
-    void addInteraction(const Interaction&) ;
+    void addInteraction(const Interaction& ) ;
+    void addTelephone(const unsigned &) ;
+    void removeInteraction(const unsigned &) ;
+    void show_interaction(const Interaction& ) ;
+    void show_list_interaction() ;
 
 };
 
