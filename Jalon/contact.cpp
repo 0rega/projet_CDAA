@@ -5,7 +5,6 @@ Contact::Contact()
 
 }
 
-J'essaie de le modifier poour voir si ca fonctionne 
 Contact::~Contact(){
     //telephone.clear() ;
     //linteractions.clear() ;
@@ -76,6 +75,42 @@ void Contact::set_creation(const tm &t){
     *creation = t;
 }
 
+void Contact::show_interaction(const Interaction &it) {
+    cout <<"date: " <<it.getDate().tm_mday << "/" << it.getDate().tm_mon << "/" << it.getDate().tm_year << " " << it.getDate().tm_hour << ":" << it.getDate().tm_min << ":" << it.getDate().tm_sec << endl ;
+    cout << it.get_Contenu() << endl ;
+}
+
+
+void Contact::addInteraction(const Interaction &inter) {
+    linteractions.push_back(inter) ;
+}
+
+void Contact::addTelephone(const unsigned &tele) {
+    telephone.push_back(tele) ;
+}
+
+void Contact::removeInteraction(const unsigned &index) {
+    int i = 0 ;
+    for(auto it = linteractions.begin() ; it != linteractions.end(); it++)
+    {
+        if(index == i)
+        {
+            linteractions.erase(it) ;
+            break ;
+        }
+        i++ ;
+    }
+}
+
+void Contact::show_list_interaction(){
+    for(auto it = linteractions.begin() ; it != linteractions.end() ; it++){
+        show_interaction(*it) ;
+        cout << endl ;
+    }
+}
+
+
+
 Contact::Contact(const string &n , const string &p, const string &m , const string &e, const list<unsigned> &tel, const string &ur  , const tm &cr , const list<Interaction> & lint){
     set_nom(n) ;
     set_prenom(p)  ;
@@ -88,9 +123,8 @@ Contact::Contact(const string &n , const string &p, const string &m , const stri
 }
 
 void affiche_list_telephone(const list<unsigned> &t){
-    for(auto it = t.begin() ; it != t.end() ; it++)
-    {
-        cout << *it << " " ;
+    for(auto &v: t){
+        cout << v << endl ;
     }
 }
 
