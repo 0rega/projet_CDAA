@@ -7,6 +7,7 @@ Interaction::Interaction()
     this->setDate(*localtime(&n)) ;
 }
 
+
 Interaction::Interaction(const tm & t, const string &c) {
     if(date != nullptr)
         date = new tm() ;
@@ -33,6 +34,8 @@ void Interaction::setDate(const tm &t){
 void Interaction::setContenu(const string &c){
     contenu = c ;
 }
+
+
 
 ostream & operator<<(ostream & os, const Interaction & i)
 {
