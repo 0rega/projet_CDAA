@@ -5,6 +5,10 @@
 #include <string>
 using namespace std ;
 
+/*!
+ * \brief The Interaction class
+ */
+
 class Interaction
 {
 private:
@@ -14,6 +18,12 @@ public:
     Interaction();
     Interaction(const tm &, const std::string &) ;
     ~Interaction() ;
+
+    /*!
+     *  \brief This function does something
+     *  \param parameter - integer to do something with
+     * @return
+     */
 
     tm getDate() const ;
     string get_Contenu() const ;
