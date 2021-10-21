@@ -20,12 +20,12 @@ public:
     void removeContact(const string &) ;
     void modifierContact(const string &, const char &, const string &) ;
 
-    list<Contact> get_ListContact() const ;
-    void set_ListContact(const list<Contact> &);
+    list<Contact> getListContact() const ;
+    void setListContact(const list<Contact> &);
 
-    Contact found_contact(const string &) ;
+    Contact foundContact(const string &) ;
 };
 
-void affiche_gestion(const GestionContact &) ;
+void afficheListeContacts(const GestionContact &) ;
 
 #endif // GESTIONCONTACT_H

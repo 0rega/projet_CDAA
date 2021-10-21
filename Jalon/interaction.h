@@ -26,7 +26,7 @@ public:
      */
 
     tm getDate() const ;
-    string get_Contenu() const ;
+    string getContenu() const ;
 
     void setDate(const tm &) ;
     void setContenu(const string &) ;

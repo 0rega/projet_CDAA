@@ -19,7 +19,7 @@ void GestionContact::removeContact(const string &s){
 
     for(auto it = ListContact.begin() ; it != ListContact.end() && found != true; it++)
     {
-        if((*it).get_nom() == s)
+        if((*it).getNom() == s)
         {
             found = true ;
             ListContact.erase(it) ;
@@ -27,36 +27,41 @@ void GestionContact::removeContact(const string &s){
     }
 }
 
-list<Contact> GestionContact::get_ListContact() const{
+list<Contact> GestionContact::getListContact() const{
     return ListContact ;
 }
 
-void GestionContact::set_ListContact(const list<Contact> &l) {
+void GestionContact::setListContact(const list<Contact> &l) {
     ListContact = l ;
 }
 
-Contact GestionContact::found_contact(const string &s){
+Contact GestionContact::foundContact(const string &s){
+    Contact res;
+
     for(auto it = ListContact.begin() ; it != ListContact.end() ; it++){
-        if((*it).get_nom() == s)
-            return (*it) ;
+        if((*it).getNom() == s)
+            res = (*it) ;
     }
+
+    return res;
+
     cout << "Non Disponible dans contact" << endl ;
 }
 
 void GestionContact::modifierContact(const string &s, const char &c , const string &sm){
     switch(c){
-        case 'n': found_contact(s).set_nom(sm) ; break ;
-    case 'p': found_contact(s).set_prenom(sm) ; break ;
-    case 'm': found_contact(s).set_mail(sm) ; break ;
-    case 'e': found_contact(s).set_entreprise(sm) ; break ;
-    case 'u': found_contact(s).set_uriPhoto(sm) ; break ;
-    default : cout << "option non disponible" ; break ;
+        case 'n': foundContact(s).setNom(sm) ; break ;
+        case 'p': foundContact(s).setPrenom(sm) ; break ;
+        case 'm': foundContact(s).setMail(sm) ; break ;
+        case 'e': foundContact(s).setEntreprise(sm) ; break ;
+        case 'u': foundContact(s).setUriPhoto(sm) ; break ;
+        default : cout << "option non disponible" ; break ;
     }
 }
 
 
-void affiche_gestion(const GestionContact &gp){
-    for(auto &v: gp.get_ListContact()){
+void afficheListeContacts(const GestionContact &gp){
+    for(auto &v: gp.getListContact()){
         affiche(v) ;
         cout << endl ;
     }

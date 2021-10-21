@@ -23,30 +23,30 @@ private:
     list<unsigned> telephone ;
     string uriPhoto ;
 
-    tm * creation ;
-    list<Interaction> linteractions ;
+    tm * dateCreation ;
+    list<Interaction> listInteractions ;
 public:
     Contact();
     Contact(const string & , const string &, const string & , const string &, const list<unsigned> &, const string &  , const tm & , const list<Interaction> & ) ;
     ~Contact() ;
 
-    string get_nom() const ;
-    string get_prenom() const ;
-    string get_entreprise() const ;
-    string get_mail() const ;
-    list<unsigned> get_telephone() const ;
-    string get_uriPhone() const ;
-    tm get_creation() const;
-    list<Interaction> get_linteractions() const ;
+    string getNom() const ;
+    string getPrenom() const ;
+    string getEntreprise() const ;
+    string getMail() const ;
+    list<unsigned> getTelephone() const ;
+    string getUriPhoto() const ;
+    tm getDateCreation() const;
+    list<Interaction> getListInteractions() const ;
 
-    void set_nom(const string &) ;
-    void set_prenom(const string &) ;
-    void set_entreprise(const string &) ;
-    void set_mail(const string &) ;
-    void set_telephone(const list<unsigned> &) ;
-    void set_uriPhoto(const string &) ;
-    void set_creation(const tm &) ;
-    void set_linteractions(const list<Interaction> &) ;
+    void setNom(const string &) ;
+    void setPrenom(const string &) ;
+    void setEntreprise(const string &) ;
+    void setMail(const string &) ;
+    void setTelephone(const list<unsigned> &) ;
+    void setUriPhoto(const string &) ;
+    void setDateCreation(const tm &) ;
+    void setListInteractions(const list<Interaction> &) ;
 
     void addInteraction(const Interaction& ) ;
     void addTelephone(const unsigned &) ;

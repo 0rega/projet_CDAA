@@ -11,68 +11,68 @@ Contact::~Contact(){
     //delete creation ;
 }
 
-string Contact::get_nom() const{
+string Contact::getNom() const{
     return nom ;
 }
 
-string Contact::get_prenom() const{
+string Contact::getPrenom() const{
     return prenom ;
 }
 
-string Contact::get_entreprise() const{
+string Contact::getEntreprise() const{
     return entreprise ;
 }
 
-string Contact::get_mail() const{
+string Contact::getMail() const{
     return mail ;
 }
 
-string Contact::get_uriPhone() const{
+string Contact::getUriPhoto() const{
     return uriPhoto ;
 }
 
-list<Interaction> Contact::get_linteractions() const{
-    return linteractions ;
+list<Interaction> Contact::getListInteractions() const{
+    return listInteractions ;
 }
 
-list<unsigned> Contact::get_telephone() const{
+list<unsigned> Contact::getTelephone() const{
     return telephone ;
 }
 
-tm Contact::get_creation() const{
-    return *creation ;
+tm Contact::getDateCreation() const{
+    return *dateCreation ;
 }
 
-void Contact::set_nom(const string &n){
+void Contact::setNom(const string &n){
     nom = n;
 }
 
-void Contact::set_prenom(const string &p) {
+void Contact::setPrenom(const string &p) {
     prenom = p ;
 }
 
-void Contact::set_mail(const string &m){
+void Contact::setMail(const string &m){
     mail = m ;
 }
 
-void Contact::set_entreprise(const string &e){
+void Contact::setEntreprise(const string &e){
     entreprise = e ;
 }
 
-void Contact::set_uriPhoto(const string &ur){
+void Contact::setUriPhoto(const string &ur){
     uriPhoto = ur ;
 }
 
-void Contact::set_linteractions(const list<Interaction> &lint){
-    linteractions = lint ;
+void Contact::setListInteractions(const list<Interaction> &lint){
+    listInteractions = lint ;
 }
 
-void Contact::set_telephone(const list<unsigned int> &t){
+void Contact::setTelephone(const list<unsigned int> &t){
     telephone = t ;
 }
 
-void Contact::set_creation(const tm &t){
-    *creation = t;
+void Contact::setDateCreation(const tm &t){
+    *dateCreation = t;
 }
 
 void Contact::show_interaction(const Interaction &it) {
@@ -82,7 +82,7 @@ void Contact::show_interaction(const Interaction &it) {
 
 
 void Contact::addInteraction(const Interaction &inter) {
-    linteractions.push_back(inter) ;
+    listInteractions.push_back(inter) ;
 }
 
 void Contact::addTelephone(const unsigned &tele) {
@@ -91,11 +91,11 @@ void Contact::addTelephone(const unsigned &tele) {
 
 void Contact::removeInteraction(const unsigned &index) {
     int i = 0 ;
-    for(auto it = linteractions.begin() ; it != linteractions.end(); it++)
+    for(auto it = listInteractions.begin() ; it != listInteractions.end(); it++)
     {
-        if(index == i)
+        if((int)index == i)
         {
-            linteractions.erase(it) ;
+            listInteractions.erase(it) ;
             break ;
         }
         i++ ;
@@ -103,7 +103,7 @@ void Contact::removeInteraction(const unsigned &index) {
 }
 
 void Contact::show_list_interaction(){
-    for(auto it = linteractions.begin() ; it != linteractions.end() ; it++){
+    for(auto it = listInteractions.begin() ; it != listInteractions.end() ; it++){
         show_interaction(*it) ;
         cout << endl ;
     }
@@ -112,14 +112,14 @@ void Contact::show_list_interaction(){
 
 
 Contact::Contact(const string &n , const string &p, const string &m , const string &e, const list<unsigned> &tel, const string &ur  , const tm &cr , const list<Interaction> & lint){
-    set_nom(n) ;
-    set_prenom(p)  ;
-    set_entreprise(e) ;
-    set_mail(m) ;
-    set_telephone(tel) ;
-    set_uriPhoto(ur) ;
-    set_creation(cr) ;
-    set_linteractions(lint) ;
+    setNom(n) ;
+    setPrenom(p)  ;
+    setEntreprise(e) ;
+    setMail(m) ;
+    setTelephone(tel) ;
+    setUriPhoto(ur) ;
+    setDateCreation(cr) ;
+    setListInteractions(lint) ;
 }
 
 void affiche_list_telephone(const list<unsigned> &t){
@@ -130,10 +130,10 @@ void affiche_list_telephone(const list<unsigned> &t){
 
 
 void affiche(const Contact &c){
-    cout << "Nom : "  << c.get_nom() << endl ;
-    cout << "Prenom : " << c.get_prenom() << endl ;
-    cout << "Entreprise :" << c.get_entreprise() << endl ;
-    cout << "Mail : " << c.get_mail() << endl ;
-    cout << "Telephone :" ; affiche_list_telephone(c.get_telephone()) ; cout << endl;
-    cout << "Photo : " << c.get_uriPhone() << endl ;
+    cout << "Nom : "  << c.getNom() << endl ;
+    cout << "Prenom : " << c.getPrenom() << endl ;
+    cout << "Entreprise :" << c.getEntreprise() << endl ;
+    cout << "Mail : " << c.getMail() << endl ;
+    cout << "Telephone :" ; affiche_list_telephone(c.getTelephone()) ; cout << endl;
+    cout << "Photo : " << c.getUriPhoto() << endl ;
 }

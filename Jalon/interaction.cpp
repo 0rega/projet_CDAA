@@ -23,7 +23,7 @@ tm Interaction::getDate() const{
     return *date ;
 }
 
-string Interaction::get_Contenu() const{
+string Interaction::getContenu() const{
     return contenu ;
 }
 
@@ -35,14 +35,12 @@ void Interaction::setContenu(const string &c){
     contenu = c ;
 }
 
-
-
 ostream & operator<<(ostream & os, const Interaction & i)
 {
     tm * t = new tm(i.getDate()) ;
     char * d = asctime(t) ;
 
-    os << d << " " << i.get_Contenu();
+    os << d << " " << i.getContenu();
     delete t ;
     return os ;
 }
