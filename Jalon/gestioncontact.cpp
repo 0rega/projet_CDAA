@@ -48,6 +48,8 @@ Contact GestionContact::foundContact(const string &s){
     cout << "Non Disponible dans contact" << endl ;
 }
 
+
+
 void GestionContact::modifierContact(const string &s, const char &c , const string &sm){
     switch(c){
         case 'n': foundContact(s).setNom(sm) ; break ;
@@ -60,9 +62,10 @@ void GestionContact::modifierContact(const string &s, const char &c , const stri
 }
 
 
-void afficheListeContacts(const GestionContact &gp){
-    for(auto &v: gp.getListContact()){
+void GestionContact::afficheListeContacts(){
+    for(auto &v: ListContact){
         affiche(v) ;
-        cout << endl ;
+        cout << " "  ;
     }
+    cout << endl ;
 }

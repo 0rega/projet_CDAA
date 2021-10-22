@@ -52,7 +52,7 @@ public:
     void addTelephone(const unsigned &) ;
     void removeInteraction(const unsigned &) ;
     void show_interaction(const Interaction& ) ;
-    void show_list_interaction() ;
+    void affiche_list_interaction() ;
 
 };
 

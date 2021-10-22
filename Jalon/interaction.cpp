@@ -1,5 +1,8 @@
 #include "interaction.h"
-
+/*!
+ * \brief Interaction::Interaction qui permet donner l'interaction lors d'une modification du contact ou d'ajout d'un contact
+ *
+ */
 Interaction::Interaction()
 {
     time_t n = time(0) ;

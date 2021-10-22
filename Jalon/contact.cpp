@@ -77,7 +77,7 @@ void Contact::setDateCreation(const tm &t){
 
 void Contact::show_interaction(const Interaction &it) {
     cout <<"date: " <<it.getDate().tm_mday << "/" << it.getDate().tm_mon << "/" << it.getDate().tm_year << " " << it.getDate().tm_hour << ":" << it.getDate().tm_min << ":" << it.getDate().tm_sec << endl ;
-    cout << it.get_Contenu() << endl ;
+    cout << it.getContenu() << endl ;
 }
 
 
@@ -102,7 +102,7 @@ void Contact::removeInteraction(const unsigned &index) {
     }
 }
 
-void Contact::show_list_interaction(){
+void Contact::affiche_list_interaction(){
     for(auto it = listInteractions.begin() ; it != listInteractions.end() ; it++){
         show_interaction(*it) ;
         cout << endl ;

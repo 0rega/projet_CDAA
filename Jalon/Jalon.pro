@@ -11,7 +11,8 @@ SOURCES += \
         contact.cpp \
         gestioncontact.cpp \
         interaction.cpp \
-        main.cpp
+        main.cpp \
+    todo.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -21,4 +22,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     contact.h \
     gestioncontact.h \
-    interaction.h
+    interaction.h \
+    todo.h

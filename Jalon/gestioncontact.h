@@ -24,8 +24,9 @@ public:
     void setListContact(const list<Contact> &);
 
     Contact foundContact(const string &) ;
+    void afficheListeContacts() ;
 };
 
-void afficheListeContacts(const GestionContact &) ;
+
 
 #endif // GESTIONCONTACT_H

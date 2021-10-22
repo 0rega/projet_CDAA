@@ -75,6 +75,7 @@ int main(int argc, char *argv[])
 
     GestionContact gc ;
     Contact c ;
+    Contact c2 ;
     c.setNom("Doe")  ;
     c.setPrenom("John") ;
     c.setEntreprise("oood") ;
@@ -83,11 +84,21 @@ int main(int argc, char *argv[])
     c.addTelephone(0635203277) ;
     it.setContenu("Modification") ;
     c.addInteraction(it) ;
-    c.show_list_interaction() ;
+    c.affiche_list_interaction() ;
+
+    c2.setNom("Vibes") ;
+    c2.setPrenom("John") ;
+    c2.setMail("get@mail.fr") ;
+    c2.setEntreprise("Odd") ;
+    c2.setUriPhoto("blabla");
+    c2.addTelephone(2934952)  ;
+    c2.addInteraction(it) ;
+    c2.affiche_list_interaction() ;
 
 
     gc.addContact(c) ;
-    afficheListeContacts(gc) ;
+    gc.addContact(c2) ;
+    gc.afficheListeContacts();
 
     return a.exec();
 }
