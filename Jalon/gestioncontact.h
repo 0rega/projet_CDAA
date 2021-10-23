@@ -18,7 +18,7 @@ public:
 
     void addContact(const Contact &) ;
     void removeContact(const string &) ;
-    void modifierContact(const string &, const char &, const string &) ;
+    void modifierContact(const string &, const string &, const string &) ;
 
     list<Contact> getListContact() const ;
     void setListContact(const list<Contact> &);

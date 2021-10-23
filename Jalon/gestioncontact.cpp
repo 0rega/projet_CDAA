@@ -4,6 +4,13 @@ GestionContact::GestionContact()
 {
 
 }
+/*!
+ * \brief le destructeur de GestionContact qui supprime tous les contacts se trouvant dans la liste de contact
+ * \brief addContact pour ajouter un contact
+ * \brief removeContact pour supprimer un contact
+ * \brief foundContact pour rechercher un contact selon un email donnée au paramètre et retourne le contact
+ * \brief modifierContact pour modifier un contact
+ */
 
 
 GestionContact::~GestionContact(){
@@ -36,28 +43,61 @@ void GestionContact::setListContact(const list<Contact> &l) {
 }
 
 Contact GestionContact::foundContact(const string &s){
-    Contact res;
 
-    for(auto it = ListContact.begin() ; it != ListContact.end() ; it++){
-        if((*it).getNom() == s)
-            res = (*it) ;
+    for(auto &v: ListContact){
+        if(v.getMail() == s)
+            return v;
     }
-
-    return res;
-
     cout << "Non Disponible dans contact" << endl ;
 }
 
 
 
-void GestionContact::modifierContact(const string &s, const char &c , const string &sm){
-    switch(c){
-        case 'n': foundContact(s).setNom(sm) ; break ;
-        case 'p': foundContact(s).setPrenom(sm) ; break ;
-        case 'm': foundContact(s).setMail(sm) ; break ;
-        case 'e': foundContact(s).setEntreprise(sm) ; break ;
-        case 'u': foundContact(s).setUriPhoto(sm) ; break ;
-        default : cout << "option non disponible" ; break ;
+void GestionContact::modifierContact(const string &s, const string &opt, const string &sm){
+    Interaction it;
+    time_t n = time(0) ;
+
+    unsigned tel, telm ;
+    if(opt == "Nom"){
+        foundContact(s).setNom(sm) ;
+        it.setContenu("Modification du nom") ;
+        it.setDate(*localtime(&n)) ;
+        foundContact(s).addInteraction(it) ;
+    }
+    if(opt == "Prenom")
+    {
+        foundContact(s).setPrenom(sm) ;
+        it.setContenu("Modification du prenom") ;
+        it.setDate(*localtime(&n)) ;
+        foundContact(s).addInteraction(it);
+    }
+    if(opt =="Entreprise"){
+        foundContact(s).setEntreprise(sm) ;
+        it.setContenu("Modification de l'entreprise") ;
+        it.setDate(*localtime(&n)) ;
+        foundContact(s).addInteraction(it) ;
+    }
+    if(opt == "Photo")
+    {
+        foundContact(s).setUriPhoto(sm)  ;
+        it.setContenu("Modification de la photo") ;
+        it.setDate(*localtime(&n)) ;
+        foundContact(s).addInteraction(it) ;
+    }
+    if(opt == "Mail")
+    {
+        foundContact(s).setMail(sm)  ;
+        it.setContenu("Modification du mail") ;
+        it.setDate(*localtime(&n)) ;
+        foundContact(s).addInteraction(it) ;
+    }
+    if(opt == "Telephone")
+    {
+        cin >> tel >> telm ;
+        foundContact(s).modifierTelephone(tel, telm) ;
+        it.setContenu("Modification du telephone") ;
+        it.setDate(*localtime(&n)) ;
+        foundContact(s).addInteraction(it) ;
     }
 }
 

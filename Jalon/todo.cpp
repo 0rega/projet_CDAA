@@ -6,6 +6,7 @@ Todo::Todo()
 }
 
 Todo::~Todo(){
+    delete lienInteraction ;
 }
 
 void Todo::setContenu(const std::string &s)

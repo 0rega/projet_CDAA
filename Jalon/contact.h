@@ -4,15 +4,18 @@
 #include <list>
 #include <ctime>
 #include "interaction.h"
+#include "todo.h"
+
 
 using namespace std;
 
+/*
 struct Itodo{
     Interaction *lienInteraction ;
     string contenu ;
     tm *date ;
 };
-
+*/
 class Contact
 {
 private:
@@ -25,6 +28,7 @@ private:
 
     tm * dateCreation ;
     list<Interaction> listInteractions ;
+    list<Todo> listTodo ;
 public:
     Contact();
     Contact(const string & , const string &, const string & , const string &, const list<unsigned> &, const string &  , const tm & , const list<Interaction> & ) ;
@@ -38,6 +42,7 @@ public:
     string getUriPhoto() const ;
     tm getDateCreation() const;
     list<Interaction> getListInteractions() const ;
+    list<Todo> getListTodo() const ;
 
     void setNom(const string &) ;
     void setPrenom(const string &) ;
@@ -47,16 +52,21 @@ public:
     void setUriPhoto(const string &) ;
     void setDateCreation(const tm &) ;
     void setListInteractions(const list<Interaction> &) ;
+    void setListTodo(const list<Todo> &) ;
 
     void addInteraction(const Interaction& ) ;
     void addTelephone(const unsigned &) ;
+    void modifierTelephone(const unsigned &, const unsigned &) ;
     void removeInteraction(const unsigned &) ;
     void show_interaction(const Interaction& ) ;
     void affiche_list_interaction() ;
+    void affiche_list_telephone();
 
+    void affiche_date_de_creation(const tm &);
+    void affiche_list_todo() ;
 };
 
-void affiche_list_telephone(const list<unsigned> &);
-void affiche(const Contact &) ;
+
+void affiche(Contact) ;
 
 #endif // CONTACT_H

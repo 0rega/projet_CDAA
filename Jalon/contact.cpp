@@ -80,6 +80,10 @@ void Contact::show_interaction(const Interaction &it) {
     cout << it.getContenu() << endl ;
 }
 
+void Contact::affiche_date_de_creation(const tm &t){
+    cout << t.tm_mday << "/" << t.tm_mon << "/" << t.tm_year << " " << t.tm_hour << " : " << t.tm_min << " : " << t.tm_sec << endl ;
+}
+
 
 void Contact::addInteraction(const Interaction &inter) {
     listInteractions.push_back(inter) ;
@@ -122,18 +126,46 @@ Contact::Contact(const string &n , const string &p, const string &m , const stri
     setListInteractions(lint) ;
 }
 
-void affiche_list_telephone(const list<unsigned> &t){
-    for(auto &v: t){
+
+void Contact::affiche_list_telephone(){
+    for(auto &v: telephone){
         cout << v << endl ;
     }
 }
 
+void Contact::modifierTelephone(const unsigned &tel, const unsigned &telm) {
+    for(auto &v: telephone){
+        if(v == tel){
+            v = telm ;
+        }
+    }
+}
 
-void affiche(const Contact &c){
+list<Todo> Contact::getListTodo() const {
+    return listTodo ;
+}
+
+void Contact::setListTodo(const list<Todo> &t) {
+    listTodo = t ;
+}
+
+void Contact::affiche_list_todo() {
+    for(auto &v: listTodo){
+        cout << v.getContenu() << endl ;
+        affiche_date_de_creation(v.getDate()) ;
+        // v.getLienInteraction()
+    }
+}
+
+
+void affiche(Contact c){
     cout << "Nom : "  << c.getNom() << endl ;
     cout << "Prenom : " << c.getPrenom() << endl ;
     cout << "Entreprise :" << c.getEntreprise() << endl ;
     cout << "Mail : " << c.getMail() << endl ;
-    cout << "Telephone :" ; affiche_list_telephone(c.getTelephone()) ; cout << endl;
+    cout << "Telephone :" ; c.affiche_list_telephone() ; cout << endl;
     cout << "Photo : " << c.getUriPhoto() << endl ;
+    cout << "Interaction: " ; c.affiche_list_interaction() ; cout << endl;
+    cout << "Date de creation: " ; c.affiche_date_de_creation(c.getDateCreation()); cout << endl ;
+    cout << "Todo" ; c.affiche_list_todo() ; cout << endl ; 
 }

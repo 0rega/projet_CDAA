@@ -83,21 +83,22 @@ int main(int argc, char *argv[])
     c.setUriPhoto("blabla") ;
     c.addTelephone(0635203277) ;
     it.setContenu("Modification") ;
-    c.addInteraction(it) ;
-    c.affiche_list_interaction() ;
+    //c.addInteraction(it) ;
+    //c.affiche_list_interaction() ;
 
-    c2.setNom("Vibes") ;
+    c2.setNom("Phil") ;
     c2.setPrenom("John") ;
     c2.setMail("get@mail.fr") ;
     c2.setEntreprise("Odd") ;
     c2.setUriPhoto("blabla");
     c2.addTelephone(2934952)  ;
-    c2.addInteraction(it) ;
-    c2.affiche_list_interaction() ;
+    //c2.addInteraction(it) ;
+    //c2.affiche_list_interaction() ;
 
 
     gc.addContact(c) ;
-    gc.addContact(c2) ;
+    gc.addContact(c2);
+    //gc.modifierContact("get@mail.fr" , "Nom"  ,"Alvine");
     gc.afficheListeContacts();
 
     return a.exec();
