@@ -12,15 +12,25 @@ GestionContact::GestionContact()
  * \brief modifierContact pour modifier un contact
  */
 
-
+/** DESTRUCTEUR
+ * @brief GestionContact::~GestionContact
+ */
 GestionContact::~GestionContact(){
     ListContact.clear() ;
 }
 
+/** Ajout d'un contact
+ * @brief GestionContact::addContact
+ * @param c
+ */
 void GestionContact::addContact(const Contact &c){
     ListContact.push_back(c) ;
 }
 
+/** Suppression d'un contact
+ * @brief GestionContact::removeContact
+ * @param s
+ */
 void GestionContact::removeContact(const string &s){
     bool found = false;
 
@@ -34,6 +44,7 @@ void GestionContact::removeContact(const string &s){
     }
 }
 
+//GETTER & SETTER LIST CONTACTS
 list<Contact> GestionContact::getListContact() const{
     return ListContact ;
 }
@@ -42,6 +53,11 @@ void GestionContact::setListContact(const list<Contact> &l) {
     ListContact = l ;
 }
 
+/** Trouver un contact
+ * @brief GestionContact::foundContact
+ * @param s
+ * @return
+ */
 Contact GestionContact::foundContact(const string &s){
 
     for(auto &v: ListContact){
@@ -52,7 +68,12 @@ Contact GestionContact::foundContact(const string &s){
 }
 
 
-
+/** Modification d'un contact
+ * @brief GestionContact::modifierContact
+ * @param s
+ * @param opt
+ * @param sm
+ */
 void GestionContact::modifierContact(const string &s, const string &opt, const string &sm){
     Interaction it;
     time_t n = time(0) ;
@@ -101,7 +122,9 @@ void GestionContact::modifierContact(const string &s, const string &opt, const s
     }
 }
 
-
+/** Affichage liste contact
+ * @brief GestionContact::afficheListeContacts
+ */
 void GestionContact::afficheListeContacts(){
     for(auto &v: ListContact){
         affiche(v) ;

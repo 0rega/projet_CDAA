@@ -10,7 +10,11 @@ Interaction::Interaction()
     this->setDate(*localtime(&n)) ;
 }
 
-
+/** Constructeur
+ * @brief Interaction::Interaction
+ * @param t
+ * @param c
+ */
 Interaction::Interaction(const tm & t, const string &c) {
     if(date != nullptr)
         date = new tm() ;
@@ -18,26 +22,37 @@ Interaction::Interaction(const tm & t, const string &c) {
     this->setContenu(c) ;
 }
 
+/** Destructeur
+ * @brief Interaction::~Interaction
+ */
 Interaction::~Interaction(){
     delete date;
 }
 
+//GETTER & SETTER DATE
 tm Interaction::getDate() const{
     return *date ;
-}
-
-string Interaction::getContenu() const{
-    return contenu ;
 }
 
 void Interaction::setDate(const tm &t){
     *date = t;
 }
 
+//GETTER & SETTER CONTENU
+string Interaction::getContenu() const{
+    return contenu ;
+}
+
 void Interaction::setContenu(const string &c){
     contenu = c ;
 }
 
+/**
+ * @brief operator <<
+ * @param os
+ * @param i
+ * @return
+ */
 ostream & operator<<(ostream & os, const Interaction & i)
 {
     tm * t = new tm(i.getDate()) ;
