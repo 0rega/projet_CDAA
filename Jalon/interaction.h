@@ -21,15 +21,32 @@ public:
     ~Interaction() ;
 
     /*!
-     *  \brief This function does something
-     *  \param parameter - integer to do something with
+     *  \brief permet d'obtenir la date 
+     *  \param cette fonction renvoie la date de l'interation  
      * @return
      */
 
     tm getDate() const ;
+
+    /*!
+     * \brief permet d'obtenir le contenu 
+     * \param cette fonction renvoie le contenu dans interaction 
+     */
     string getContenu() const ;
 
+    /*! 
+     * \brief permet modifier la date d'interaction 
+     * \param prend un const tm en argument pour remplacer la valeurde la date
+     *
+     */
+ 
     void setDate(const tm &) ;
+
+    /*! 
+     * \brief permet modifier le contenu de l'interaction 
+     * \param prend un std::string en argument pour remplacer la valeur le contenu de l'interaction  
+     */
+
     void setContenu(const string &) ;
 
     friend ostream& operator<<(std::ostream& , const Interaction &) ;

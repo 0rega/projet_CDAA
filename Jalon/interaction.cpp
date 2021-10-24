@@ -26,7 +26,7 @@ Interaction::Interaction(const tm & t, const string &c) {
  * @brief Interaction::~Interaction
  */
 Interaction::~Interaction(){
-    delete date;
+    //delete date;
 }
 
 //GETTER & SETTER DATE

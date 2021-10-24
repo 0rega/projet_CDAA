@@ -1,6 +1,4 @@
-#include <QCoreApplication>
 #include <iostream>
-#include <QtSql/QtSql>
 #include "contact.h"
 #include "gestioncontact.h"
 #include "interaction.h"
@@ -69,9 +67,9 @@ Contact modifier_contact(Contact c, string outils){
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
 
     Interaction it ;
+    time_t n = time(0) ; 
 
     GestionContact gc ;
     Contact c ;
@@ -81,7 +79,8 @@ int main(int argc, char *argv[])
     c.setEntreprise("oood") ;
     c.setMail("john.doe@gmail.com") ;
     c.setUriPhoto("blabla") ;
-    c.addTelephone(0635203277) ;
+    c.addTelephone(0635203277) ; 
+    c.setDateCreation(*localtime(&n)) ; 
     it.setContenu("Modification") ;
     //c.addInteraction(it) ;
     //c.affiche_list_interaction() ;
@@ -91,6 +90,7 @@ int main(int argc, char *argv[])
     c2.setMail("get@mail.fr") ;
     c2.setEntreprise("Odd") ;
     c2.setUriPhoto("blabla");
+    c2.setDateCreation(*localtime(&n)) ; 
     c2.addTelephone(2934952)  ;
     //c2.addInteraction(it) ;
     //c2.affiche_list_interaction() ;
@@ -98,8 +98,8 @@ int main(int argc, char *argv[])
 
     gc.addContact(c) ;
     gc.addContact(c2);
-    //gc.modifierContact("get@mail.fr" , "Nom"  ,"Alvine");
+    gc.modifierContact("get@mail.fr" , "Nom"  ,"Alvine");
     gc.afficheListeContacts();
 
-    return a.exec();
+    return 0 ; 
 }

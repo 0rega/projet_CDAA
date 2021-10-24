@@ -2,14 +2,14 @@
 
 /** CONSTRUCTEUR
  * @brief Contact::Contact
- * @param n
- * @param p
- * @param m
- * @param e
- * @param tel
- * @param ur
- * @param cr
- * @param lint
+ * @param n - nom
+ * @param p - prenom 
+ * @param m - mail 
+ * @param e - entreprise 
+ * @param tel - telephone 
+ * @param ur - chemin photo
+ * @param cr - date de creation 
+ * @param lint - liste d'interaction  
  */
 Contact::Contact(const string &n , const string &p, const string &m , const string &e, const list<unsigned> &tel, const string &ur  , const tm &cr , const list<Interaction> & lint){
     setNom(n) ;
@@ -101,11 +101,11 @@ void Contact::setTelephone(const list<unsigned int> &t){
 
 //GETTER & SETTER DATE CREATION
 tm Contact::getDateCreation() const{
-    return *dateCreation ;
+    return dateCreation ;
 }
 
 void Contact::setDateCreation(const tm &t){
-    *dateCreation = t;
+    dateCreation = t;
 }
 
 /**

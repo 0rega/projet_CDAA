@@ -26,7 +26,7 @@ private:
     list<unsigned> telephone ;
     string uriPhoto ;
 
-    tm * dateCreation ;
+    tm dateCreation ;
     list<Interaction> listInteractions ;
     list<Todo> listTodo ;
 public:
