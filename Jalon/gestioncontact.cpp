@@ -1,4 +1,5 @@
 #include "gestioncontact.h"
+#include <QDebug>
 
 GestionContact::GestionContact()
 {
@@ -36,7 +37,7 @@ void GestionContact::removeContact(const string &s){
 
     for(auto it = ListContact.begin() ; it != ListContact.end() && found != true; it++)
     {
-        if((*it).getNom() == s)
+        if((*it).getMail() == s)
         {
             found = true ;
             ListContact.erase(it) ;
@@ -78,48 +79,52 @@ void GestionContact::modifierContact(const string &s, const string &opt, const s
     Interaction it;
     time_t n = time(0) ;
 
+    Contact c = foundContact(s);
+    removeContact(s);
+
     unsigned tel, telm ;
     if(opt == "Nom"){
-        foundContact(s).setNom(sm) ;
+        c.setNom(sm) ;
         it.setContenu("Modification du nom") ;
         it.setDate(*localtime(&n)) ;
-        foundContact(s).addInteraction(it) ;
+        c.addInteraction(it) ;
     }
     if(opt == "Prenom")
     {
-        foundContact(s).setPrenom(sm) ;
+        c.setPrenom(sm) ;
         it.setContenu("Modification du prenom") ;
         it.setDate(*localtime(&n)) ;
-        foundContact(s).addInteraction(it);
+        c.addInteraction(it);
     }
     if(opt =="Entreprise"){
-        foundContact(s).setEntreprise(sm) ;
+        c.setEntreprise(sm) ;
         it.setContenu("Modification de l'entreprise") ;
         it.setDate(*localtime(&n)) ;
-        foundContact(s).addInteraction(it) ;
+        c.addInteraction(it) ;
     }
     if(opt == "Photo")
     {
-        foundContact(s).setUriPhoto(sm)  ;
+        c.setUriPhoto(sm)  ;
         it.setContenu("Modification de la photo") ;
         it.setDate(*localtime(&n)) ;
-        foundContact(s).addInteraction(it) ;
+        c.addInteraction(it) ;
     }
     if(opt == "Mail")
     {
-        foundContact(s).setMail(sm)  ;
+        c.setMail(sm)  ;
         it.setContenu("Modification du mail") ;
         it.setDate(*localtime(&n)) ;
-        foundContact(s).addInteraction(it) ;
+        c.addInteraction(it) ;
     }
     if(opt == "Telephone")
     {
         cin >> tel >> telm ;
-        foundContact(s).modifierTelephone(tel, telm) ;
+        c.modifierTelephone(tel, telm) ;
         it.setContenu("Modification du telephone") ;
         it.setDate(*localtime(&n)) ;
-        foundContact(s).addInteraction(it) ;
+        c.addInteraction(it) ;
     }
+    addContact(c);
 }
 
 /** Affichage liste contact

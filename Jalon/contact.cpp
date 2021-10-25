@@ -233,13 +233,14 @@ void Contact::affiche_list_todo() {
  * @param c
  */
 void affiche(Contact c){
+    cout << endl;
     cout << "Nom : "  << c.getNom() << endl ;
     cout << "Prenom : " << c.getPrenom() << endl ;
     cout << "Entreprise :" << c.getEntreprise() << endl ;
     cout << "Mail : " << c.getMail() << endl ;
     cout << "Telephone :" ; c.affiche_list_telephone() ; cout << endl;
     cout << "Photo : " << c.getUriPhoto() << endl ;
-    cout << "Interaction: " ; c.affiche_list_interaction() ; cout << endl;
     cout << "Date de creation: " ; c.affiche_date_de_creation(c.getDateCreation()); cout << endl ;
+    cout << "Interaction: " ; cout << endl; c.affiche_list_interaction() ; cout << endl;
     cout << "Todo" ; c.affiche_list_todo() ; cout << endl ; 
 }

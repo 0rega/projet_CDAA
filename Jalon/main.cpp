@@ -40,12 +40,16 @@ int main(int argc, char *argv[])
     c2.addInteraction(it) ;
     //c2.affiche_list_interaction() ;
 
-
     gc.addContact(c) ;
     gc.addContact(c2);
-    gc.modifierContact(c.getMail() , "Prenom"  ,"Alvine");
-    gc.removeContact(c2.getNom()) ;
     gc.afficheListeContacts();
+
+    gc.modifierContact(c.getMail() , "Prenom"  ,"Alvine");
+    //gc.removeContact(c2.getNom()) ;
+    gc.afficheListeContacts();
+
+    gc.modifierContact(c.getMail() , "Entreprise"  ,"Netflix");
+    //gc.afficheListeContacts();
 
     return 0 ; 
 }

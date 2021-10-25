@@ -223,6 +223,7 @@ Makefile: ../Jalon/Jalon.pro ../../../Qt/5.12.11/mingw73_32/mkspecs/win32-g++/qm
 		../../../Qt/5.12.11/mingw73_32/mkspecs/features/qt_config.prf \
 		../../../Qt/5.12.11/mingw73_32/mkspecs/win32-g++/qmake.conf \
 		../../../Qt/5.12.11/mingw73_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/5.12.11/mingw73_32/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.12.11/mingw73_32/mkspecs/features/toolchain.prf \
 		../../../Qt/5.12.11/mingw73_32/mkspecs/features/default_pre.prf \
@@ -406,6 +407,7 @@ Makefile: ../Jalon/Jalon.pro ../../../Qt/5.12.11/mingw73_32/mkspecs/win32-g++/qm
 ../../../Qt/5.12.11/mingw73_32/mkspecs/features/qt_config.prf:
 ../../../Qt/5.12.11/mingw73_32/mkspecs/win32-g++/qmake.conf:
 ../../../Qt/5.12.11/mingw73_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt/5.12.11/mingw73_32/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/5.12.11/mingw73_32/mkspecs/features/toolchain.prf:
 ../../../Qt/5.12.11/mingw73_32/mkspecs/features/default_pre.prf:
