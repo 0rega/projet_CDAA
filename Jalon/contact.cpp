@@ -158,6 +158,17 @@ void Contact::addTelephone(const unsigned &tele) {
     telephone.push_back(tele) ;
 }
 
+void Contact::addTodo(const Todo &t){
+    listTodo.push_back(t) ;
+}
+
+void Contact::removeTodo(const string &t){
+    for(auto it = listTodo.begin()  ; it != listTodo.end() ; ++it){
+        if((*it).getContenu() == t)
+            listTodo.erase(it) ;
+    }
+}
+
 void Contact::affiche_list_interaction(){
     for(auto it = listInteractions.begin() ; it != listInteractions.end() ; it++){
         show_interaction(*it) ;
@@ -210,8 +221,9 @@ void Contact::setListTodo(const list<Todo> &t) {
  */
 void Contact::affiche_list_todo() {
     for(auto &v: listTodo){
-        cout << v.getContenu() << endl ;
+        cout << "@todo " << v.getContenu() << " @date " ;
         affiche_date_de_creation(v.getDate()) ;
+        cout << endl ;
         // v.getLienInteraction()
     }
 }

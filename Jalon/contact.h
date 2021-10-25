@@ -56,9 +56,11 @@ public:
 
     void addInteraction(const Interaction& ) ;
     void addTelephone(const unsigned &) ;
+    void addTodo(const Todo &) ;
     void modifierTelephone(const unsigned &, const unsigned &) ;
     void removeInteraction(const unsigned &) ;
     void show_interaction(const Interaction& ) ;
+    void removeTodo(const string &) ;
     void affiche_list_interaction() ;
     void affiche_list_telephone();
 
