@@ -6,66 +6,17 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     dbPath = "D:/GitHub/projet_CDAA/projetOriginalCDAA/base.sqlite";
+
+
+
+    //ui->listContacts->setHorizontalHeader()
     ui->setupUi(this);
 
-    /*this->resize(500, 250)  ;
-    w1 = new QWidget(this) ;
-    w1->resize(200, 200) ;
-    Flayout = new QFormLayout(w1) ;
-    valider = new QPushButton(tr("Valider"), this) ;
-    //effacer_contact = new QPushButton(tr("Effacer Contact"), this ) ;
-    //ajouter_contact = new QPushButton(tr("Ajouter Contact") , this ) ;
-    ajouter_photo = new QPushButton(tr("Ajouter Photo") , this) ;
-
-
-    nom = new QLabel("Nom" , this) ;
-    prenom = new QLabel("Prenom" , this) ;
-    entreprise = new QLabel("Entreprise" , this) ;
-    mail = new QLabel("Mail" , this);
-    Painter = new QPainter(w1) ;
-    photo.load("D:/GitHub/projet_CDAA/projetOriginalCDAA/personnage.png") ;
-    Painter->drawPixmap(200 , 50 , photo) ;
-    lphoto = new QLabel("Ajouter Photo" , this) ;
-    interactionlabel = new QLabel("Interaction", this) ;
-    lphoto->setGeometry(300 , 50 , 100 , 100 ) ;
-    //lInteraction = new QLabel("Interaction" , this) ;
-    //ltodo = new QLabel("Todo" , this) ;
-    nomEdit = new QLineEdit(this);
-    prenomEdit = new QLineEdit(this) ;
-    entrepriseEdit = new QLineEdit(this) ;
-    mailEdit = new QLineEdit(this)  ;
-    interactionEdit = new QLineEdit(this) ;
-
-
-    //listeInteraction = new QLineEdit(this) ;
-    //listTodo = new QLineEdit(this) ;
-
-    Flayout->setWidget(0 , QFormLayout::LabelRole , nom) ;
-    Flayout->setWidget(0, QFormLayout::FieldRole , nomEdit) ;
-    Flayout->setWidget(1 , QFormLayout::LabelRole , prenom) ;
-    Flayout->setWidget(1, QFormLayout::FieldRole ,prenomEdit) ;
-    Flayout->setWidget(2 , QFormLayout::LabelRole , entreprise) ;
-    Flayout->setWidget(2, QFormLayout::FieldRole , entrepriseEdit) ;
-    Flayout->setWidget(3 , QFormLayout::LabelRole , mail) ;
-    Flayout->setWidget(3, QFormLayout::FieldRole ,mailEdit) ;
-    Flayout->setWidget(4 ,QFormLayout::FieldRole, ajouter_photo) ;
-    Flayout->setWidget(5 , QFormLayout::LabelRole , interactionlabel) ;
-    Flayout->setWidget(5 , QFormLayout::FieldRole , interactionEdit) ;
-    //Flayout->setWidget(6 , QFormLayout::LabelRole , ltodo) ;
-    //Flayout->setWidget(6 , QFormLayout::FieldRole , listTodo) ;
-
-    Flayout->setWidget(6 , QFormLayout::FieldRole , valider ) ;
-
-    connect(valider, SIGNAL(clicked()) , this, SLOT(ajouter_BD())) ;
-    //connect(valider , SIGNAL(clicked()) , this , SLOT(update_DB())) ;
-    connect(valider, SIGNAL(clicked()) , this , SLOT(close())) ;
-    connect(ajouter_photo, SIGNAL(clicked()) , this , SLOT(ajouter_UP())) ;
-    */
+    connect(this, SIGNAL(signalDelete(QString&)), dbx, SLOT(deleteContact(QString&))) ;
 
 }
 
 /*fonction d'ajout dans la BD*/
-
 
 void extraction_tags(QString s , QString  *dates, QString *contenus){
     string n = s.toStdString() ;
@@ -98,6 +49,7 @@ void extraction_tags(QString s , QString  *dates, QString *contenus){
 
 
 void MainWindow::ajouter_BD(){
+    /*
     db = QSqlDatabase::addDatabase("QSQLITE") ;
     qDebug() << "affiche BD" ;
     QSqlQuery query ;
@@ -174,7 +126,7 @@ void MainWindow::ajouter_BD(){
                qDebug() << "Requête Interaction reussit ! ";
            }
         }
-    db.close() ;
+    db.close() ;*/
 }
 
 /*Ajout de la photo*/
@@ -200,13 +152,15 @@ void MainWindow::ajouter_UP(){
 }
 
 void MainWindow::show_in_list(GestionContact &l){
+    /*
     QString s;
     string sx ;
     for(auto &v:l.getListContact()){
         sx+=v.getNom()+" "+v.getPrenom()+" "+v.getEntreprise()+" "+v.getMail() + " " + v.getUriPhoto() ;
     }
     s = QString::fromStdString(sx) ;
-    emit listqstring(s) ;
+    emit liststring(s) ;
+    */
 }
 
 void MainWindow::decision(bool &d){
@@ -214,7 +168,7 @@ void MainWindow::decision(bool &d){
 }
 
 void MainWindow::update_DB(){
-    db = QSqlDatabase::addDatabase("QSQLITE") ;
+    /*db = QSqlDatabase::addDatabase("QSQLITE") ;
     QSqlQuery query ;
     GestionContact gc ;
     Contact c;
@@ -270,7 +224,7 @@ void MainWindow::update_DB(){
                mailEdit->clear() ;
            }
         }
-    db.close() ;
+    db.close() ;*/
 }
 void MainWindow::ls(int &l){
     ligne_selectionner = l ;
@@ -293,7 +247,7 @@ void MainWindow::qstringid(QString &id) {
 //On recherche un contact
 void MainWindow::on_bRecherche_clicked()
 {
-
+    //db.searchContact(ui->tbRecherche->text());
 }
 
 //On modifie un contact
@@ -308,30 +262,14 @@ void MainWindow::on_bModifier_clicked()
 //On supprime un contact
 void MainWindow::on_bSupprimer_clicked()
 {
-    QString sx = ui->ListContacts->currentItem()->text();
-    QString id =  QString(sx[0]) ;
-    qDebug() << id ;
+    QString sx = ui->listContact->currentItem()->text();
+    QString id =  "" ;
+    if(id != "")
+    {
+        emit signalDelete(id);
+    }
 
-    ui->ListContacts->takeItem(ui->ListContacts->currentRow()) ;
-    db = QSqlDatabase::addDatabase("QSQLITE") ;
-    GestionContact gc ;
-    QSqlQuery query ;
-    Contact c;
-    db.setDatabaseName(dbPath) ;
-    if(!db.open()){
-        qDebug() << "Pas de connexion  à la BDD" ;
-    }
-    else {
-        qDebug() << "Connexion à la BDD";
-        query.prepare("delete from Contact where idContact = ?");
-        query.addBindValue(id);
-        if (!query.exec()) {
-            qDebug() << "La requete ne s'execute pas sur la base de donnée :(";
-        } else {
-            qDebug() << "Requete reussit dans la base de donnée";
-        }
-    }
-    db.close() ;
+
 }
 
 //On ajoute un contact

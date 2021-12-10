@@ -4,7 +4,7 @@
 #include <QLocale>
 #include <QTranslator>
 #include "contact.h"
-#include "basededonne.h"
+
 #include "menu.h"
 
 

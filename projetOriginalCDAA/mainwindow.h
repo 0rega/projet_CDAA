@@ -25,6 +25,7 @@
 #include <sstream>
 
 #include "fichecontact.h"
+#include "basededonnee.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -33,7 +34,6 @@ QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -48,18 +48,17 @@ public slots:
     void ls(int&) ;
     void char_dec(bool&) ;
     void qstringid(QString &) ;
+
 signals:
     void signalcontact(GestionContact&) ;
     void listqstring(QString &) ;
     void signalimage(QString &) ;
+    void signalDelete(QString &);
 
 private slots:
     void on_bRecherche_clicked();
-
     void on_bModifier_clicked();
-
     void on_bSupprimer_clicked();
-
     void on_bAjouter_clicked();
 
 private:
@@ -81,7 +80,7 @@ private:
     QLabel *lienphoto ;
     QLabel *interactionlabel ;
     QLineEdit *interactionEdit ;
-    QSqlDatabase db ;
+    //QSqlDatabase db ;
     QLineEdit *nomEdit ;
     QLineEdit *prenomEdit ;
     QLineEdit *entrepriseEdit ;
@@ -98,6 +97,9 @@ private:
     bool value ;
     QString dbPath;
     FicheContact *myNewWindow;
+    GestionContact gc;
+    GestionInteraction gi;
+    BaseDeDonnee * dbx;
 
     Ui::MainWindow *ui;
 };

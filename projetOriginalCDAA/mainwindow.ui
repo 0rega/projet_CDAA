@@ -14,16 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextEdit" name="tbRecherche">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>60</y>
-      <width>351</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="bRecherche">
     <property name="geometry">
      <rect>
@@ -35,16 +25,6 @@
     </property>
     <property name="text">
      <string>Recherche</string>
-    </property>
-   </widget>
-   <widget class="QListWidget" name="ListContacts">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>110</y>
-      <width>731</width>
-      <height>351</height>
-     </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="bModifier">
@@ -84,6 +64,26 @@
     </property>
     <property name="text">
      <string>Ajouter un Contact</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="tbRecherche">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>60</y>
+      <width>361</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listContact">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>110</y>
+      <width>731</width>
+      <height>351</height>
+     </rect>
     </property>
    </widget>
   </widget>

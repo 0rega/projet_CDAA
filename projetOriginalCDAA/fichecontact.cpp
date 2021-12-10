@@ -23,6 +23,6 @@ void FicheContact::on_bValidate_clicked()
 
 void FicheContact::on_bCanceled_clicked()
 {
-
+    close();
 }
 
