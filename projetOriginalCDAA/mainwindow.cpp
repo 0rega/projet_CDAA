@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     //ui->listContacts->setHorizontalHeader()
     ui->setupUi(this);
 
-    connect(this, SIGNAL(signalDelete(QString&)), dbx, SLOT(deleteContact(QString&))) ;
+    connect(this, SIGNAL(signalDelete(QString&)), db, SLOT(deleteContact(QString&))) ;
 
 }
 
@@ -263,13 +263,9 @@ void MainWindow::on_bModifier_clicked()
 void MainWindow::on_bSupprimer_clicked()
 {
     QString sx = ui->listContact->currentItem()->text();
-    QString id =  "" ;
-    if(id != "")
-    {
-        emit signalDelete(id);
-    }
+    QString id =  QString(sx[0]) ;
 
-
+    emit this->signalDelete(id);
 }
 
 //On ajoute un contact
